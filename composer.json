@@ -1,5 +1,5 @@
 {
-    "name": "digitalsilk/phpcs-composer",
+    "name": "wpdigitalsilk/phpcs-composer",
     "description": "Digital Silk PHP CodeSniffer Ruleset",
     "type": "phpcodesniffer-standard",
     "license": "MIT",
