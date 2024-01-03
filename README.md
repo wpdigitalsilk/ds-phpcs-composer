@@ -7,7 +7,7 @@
 Install the library via Composer:
 
 ```bash
-$ composer require --dev digitalsilk/phpcs-composer:dev-master
+$ composer require --dev wpdigitalsilk/phpcs-composer:dev-master
 ```
 
 That's it!
