@@ -2,6 +2,9 @@
 <ruleset name="DigitalSilk-Default">
 	<description>A base ruleset that all other DigitalSilk rulesets should extend.</description>
 
+	<arg name="colors"/>
+	<arg value="sp"/>
+
 	<exclude-pattern>*/phpunit.xml*</exclude-pattern>
 	<exclude-pattern>*/dist/*</exclude-pattern>
 	<exclude-pattern>*/languages/*</exclude-pattern>
@@ -77,6 +80,10 @@
 
 		<!-- This nonce sniff almost never works right -->
 		<exclude name="WordPress.Security.NonceVerification.Missing"/>
+
+		<!-- Exclude snake case for properties -->
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
+
 	</rule>
 
 	<!-- Sets the minimum supported WP version to 5.6, which is over a year old. -->
@@ -107,6 +114,13 @@
 			</property>
 		</properties>
 	</rule>
+
+	<!-- All Helpers class methods are escaped. -->
+	<rule ref="WordPress.Security.EscapeOutput">
+        <properties>
+            <property name="customAutoEscapedFunctions" type="array" value="Helpers"/>
+        </properties>
+    </rule>
 
 	<!-- Loads the PHP Compatibility ruleset. -->
 	<rule ref="PHPCompatibilityWP" />
