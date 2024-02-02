@@ -117,6 +117,7 @@
 			<property name="customSanitizingFunctions" type="array">
 				<!-- sanitize_url() is an undeprecated sanitizing function. -->
 				<element value="sanitize_url" />
+				<element value="sanitize_text_field" />
 			</property>
 		</properties>
 	</rule>
