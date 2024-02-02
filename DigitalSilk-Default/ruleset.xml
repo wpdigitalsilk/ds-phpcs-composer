@@ -90,15 +90,13 @@
 		<!-- Exclude param comment -->
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 
+		<!-- Exclude missing translator comment a warning. -->
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+
 	</rule>
 
 	<!-- Sets the minimum supported WP version to 5.6, which is over a year old. -->
 	<config name="minimum_supported_wp_version" value="5.6" />
-
-	<!-- Make missing translator comment a warning. -->
-	<rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
-		<type>warning</type>
-	</rule>
 
 	<!-- Sometimes we need to override globals -->
 	<rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
