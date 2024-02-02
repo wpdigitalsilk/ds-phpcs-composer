@@ -87,6 +87,9 @@
 		<!-- Exclude loose comparison -->
 		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
 
+		<!-- Exclude param comment -->
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+
 	</rule>
 
 	<!-- Sets the minimum supported WP version to 5.6, which is over a year old. -->
