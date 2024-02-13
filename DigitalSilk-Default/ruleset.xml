@@ -19,70 +19,37 @@
 	<config name="ignore_warnings_on_exit" value="1"/>
 	<config name="minimum_supported_wp_version" value="5.6" />
 
-	<!-- Don't worry about files that don't contain any code -->
-	<rule ref="Internal.NoCodeFound">
-		<severity>0</severity>
-	</rule>
 
-	<!-- Ignore mixed line-endings warnings -->
-	<rule ref="Internal.LineEndings.Mixed">
-		<severity>0</severity>
-	</rule>
-
-	<!-- Internal exceptions (often occur on minified files) -->
-	<rule ref="Internal.Tokenizer.Exception">
-		<severity>0</severity>
-	</rule>
-
-
-	<rule ref="WordPress.DB.PreparedSQL"/>
-	<rule ref="WordPress.DB.DirectDatabaseQuery"/>
-	<rule ref="WordPress.DB.SlowDBQuery"/>
-	<rule ref="WordPress.WP.PostsPerPage">
-		<properties>
-			<property name="posts_per_page" value="200"/>
-		</properties>
-	</rule>
-
-	<!-- Enforce doc standards -->
-	<rule ref="WordPress-Docs">
-		<!-- Don't worry about capitalizing long lines -->
-
-		<!-- Dont need to capitalize first letter -->
-	</rule>
-
-
+	<!-- Exclude standards -->
 	<rule ref="Universal">
 		<exclude name="Universal"/>
 	</rule>
 
 	<rule ref="Generic">
-		<!-- <exclude name="Generic"/> -->
-		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
-		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
-		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+		<exclude name="Generic"/>
+	</rule>
 
 
+	<!-- Include standards/rulesets. -->
+	<rule ref="PHPCompatibilityWP" />
+
+	<rule ref="WordPress-Docs" />
+
+	<rule ref="WordPress.DB.PreparedSQL"/>
+
+	<rule ref="WordPress.DB.DirectDatabaseQuery"/>
+
+	<rule ref="WordPress.DB.SlowDBQuery"/>
+
+	<rule ref="WordPress.WP.PostsPerPage">
+		<properties>
+			<property name="posts_per_page" value="100"/>
+		</properties>
 	</rule>
 
 	<rule ref="WordPress-Extra">
-
 		<!-- Forget about file names -->
 		<exclude name="WordPress.Files.FileName"/>
-
-		<!-- Allow same line control structures e.g. if ( true ) { echo 1; } -->
-		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
-
-		<!-- Don't require punctuation after inline comments -->
-		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-
-
-		<!-- Comment punctuation doesn't matter -->
-		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
-		<exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
-
-		<!-- Allow shorthand array syntax -->
 
 		<!-- Allow WP global modification -->
 		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited"/>
@@ -96,12 +63,19 @@
 		<!-- Exclude loose comparison -->
 		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
 
-		<!-- Exclude param comment -->
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
-
 		<!-- Exclude missing translator comment a warning. -->
 		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
 
+		<!-- Exclude Squiz.Commenting -->
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+
+		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
+
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
+		
+		<exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
 	</rule>
 
 	<!-- Sometimes we need to override globals -->
@@ -109,25 +83,13 @@
 		<type>warning</type>
 	</rule>
 
-
-	<!-- Validate sanitised input. -->
-	<rule ref="WordPress.Security.ValidatedSanitizedInput">
-		<properties>
-			<property name="customSanitizingFunctions" type="array">
-				<!-- sanitize_url() is an undeprecated sanitizing function. -->
-				<element value="sanitize_url" />
-			</property>
-		</properties>
-	</rule>
-
 	<!-- All Helpers class methods are escaped by default. -->
 	<rule ref="WordPress.Security.EscapeOutput">
         <properties>
-            <property name="customAutoEscapedFunctions" type="array" value="Helpers"/>
+            <property name="customAutoEscapedFunctions" type="array">
+                <element value="helpers" />
+                <element value="Helpers" />
+            </property>
         </properties>
     </rule>
-
-	<!-- Loads the PHP Compatibility ruleset. -->
-	<rule ref="PHPCompatibilityWP" />
-
 </ruleset>
