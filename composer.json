@@ -4,20 +4,20 @@
     "type": "phpcodesniffer-standard",
     "license": "MIT",
     "require": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "phpcompatibility/phpcompatibility-wp": "*",
         "squizlabs/php_codesniffer": "^3.8",
-        "wp-coding-standards/wpcs": "^3.0"
+        "wp-coding-standards/wpcs": "*"
     },
     "prefer-stable": true,
     "author": "Digital Silk",
     "scripts": {
-        "configure-phpcs": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+        "install-codestandards": [
+            "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
             "\"vendor/bin/phpcs\" --config-set default_standard DigitalSilk-Default"
         ],
-        "post-install-cmd": "@configure-phpcs",
-        "post-update-cmd": "@configure-phpcs",
+        "post-install-cmd": "@install-codestandards",
+        "post-update-cmd": "@install-codestandards",
         "phpcs": "\"vendor/bin/phpcs\" . ",
         "phpcbf": "\"vendor/bin/phpcbf\" . "
     },
