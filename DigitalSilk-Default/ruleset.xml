@@ -47,15 +47,26 @@
 	<!-- Enforce doc standards -->
 	<rule ref="WordPress-Docs">
 		<!-- Don't worry about capitalizing long lines -->
-		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
 
 		<!-- Dont need to capitalize first letter -->
+	</rule>
+
+
+	<rule ref="Universal">
+		<exclude name="Universal"/>
+	</rule>
+
+	<rule ref="Generic">
+		<!-- <exclude name="Generic"/> -->
+		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
 		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+
+
 	</rule>
 
 	<rule ref="WordPress-Extra">
-		<!-- Undeprecated in WordPress 5.9.0 -->
-		<exclude name="WordPress.WP.DeprecatedFunctions.sanitize_urlFound" />
 
 		<!-- Forget about file names -->
 		<exclude name="WordPress.Files.FileName"/>
@@ -66,15 +77,12 @@
 		<!-- Don't require punctuation after inline comments -->
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
 
-		<!-- Allow empty catch statements -->
-		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
 
 		<!-- Comment punctuation doesn't matter -->
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
 		<exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
 
 		<!-- Allow shorthand array syntax -->
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
 
 		<!-- Allow WP global modification -->
 		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited"/>
