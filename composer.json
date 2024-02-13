@@ -4,27 +4,22 @@
     "type": "phpcodesniffer-standard",
     "license": "MIT",
     "require": {
-        "dealerdirect/phpcodesniffer-composer-installer": "*",
-        "phpcompatibility/phpcompatibility-wp": "^2",
-        "squizlabs/php_codesniffer": "3.7.1",
-        "wp-coding-standards/wpcs": "*",
-        "automattic/vipwpcs": "^2.3"
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "squizlabs/php_codesniffer": "^3.8",
+        "wp-coding-standards/wpcs": "^3.0"
     },
     "prefer-stable": true,
-    "authors": [{
-        "name": "Digital Silk",
-        "homepage": "https://www.digitalsilk.com/"
-    }],
+    "author": "Digital Silk",
     "scripts": {
-        "config-cs": [
+        "configure-phpcs": [
             "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
             "\"vendor/bin/phpcs\" --config-set default_standard DigitalSilk-Default"
         ],
-        "post-install-cmd": "@config-cs",
-        "post-update-cmd": "@config-cs",
-        "lint": "\"vendor/bin/phpcs\" . ",
+        "post-install-cmd": "@configure-phpcs",
+        "post-update-cmd": "@configure-phpcs",
         "phpcs": "\"vendor/bin/phpcs\" . ",
-        "phpcbf": "\"vendor/bin/phpcbf\" -v . "
+        "phpcbf": "\"vendor/bin/phpcbf\" . "
     },
     "config": {
         "allow-plugins": {

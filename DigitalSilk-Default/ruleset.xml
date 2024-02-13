@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <ruleset name="DigitalSilk-Default">
-	<description>A base ruleset that all other DigitalSilk rulesets should extend.</description>
+	<description>DigitalSilk-Default ruleset.</description>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
 
-	<exclude-pattern>*/phpunit.xml*</exclude-pattern>
+	<!-- Exclude Patterns -->
 	<exclude-pattern>*/dist/*</exclude-pattern>
 	<exclude-pattern>*/languages/*</exclude-pattern>
-
-	<!-- Third-party code -->
 	<exclude-pattern>*/bower-components/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
-
-	<!-- Ensure certain file types aren't sniffed -->
+	<exclude-pattern>*/phpunit.xml*</exclude-pattern>
 	<exclude-pattern>*\.(css|js)</exclude-pattern>
+
+	<!-- Configs -->
+	<config name="testVersion" value="7.4-"/>
+	<config name="ignore_warnings_on_exit" value="1"/>
+	<config name="minimum_supported_wp_version" value="5.6" />
 
 	<!-- Don't worry about files that don't contain any code -->
 	<rule ref="Internal.NoCodeFound">
@@ -32,8 +34,6 @@
 		<severity>0</severity>
 	</rule>
 
-	<!-- For CI, don't fail on warnings -->
-	<config name="ignore_warnings_on_exit" value="1"/>
 
 	<rule ref="WordPress.DB.PreparedSQL"/>
 	<rule ref="WordPress.DB.DirectDatabaseQuery"/>
@@ -43,6 +43,7 @@
 			<property name="posts_per_page" value="200"/>
 		</properties>
 	</rule>
+
 	<!-- Enforce doc standards -->
 	<rule ref="WordPress-Docs">
 		<!-- Don't worry about capitalizing long lines -->
@@ -95,19 +96,11 @@
 
 	</rule>
 
-	<!-- Sets the minimum supported WP version to 5.6, which is over a year old. -->
-	<config name="minimum_supported_wp_version" value="5.6" />
-
 	<!-- Sometimes we need to override globals -->
 	<rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
 		<type>warning</type>
 	</rule>
 
-	<!-- Make sure we always exit after a redirect -->
-	<rule ref="WordPressVIPMinimum.Security.ExitAfterRedirect"/>
-
-	<!-- Make sure that the proper escaping functions are being used -->
-	<rule ref="WordPressVIPMinimum.Security.ProperEscapingFunction"/>
 
 	<!-- Validate sanitised input. -->
 	<rule ref="WordPress.Security.ValidatedSanitizedInput">
@@ -119,7 +112,7 @@
 		</properties>
 	</rule>
 
-	<!-- All Helpers class methods are escaped. -->
+	<!-- All Helpers class methods are escaped by default. -->
 	<rule ref="WordPress.Security.EscapeOutput">
         <properties>
             <property name="customAutoEscapedFunctions" type="array" value="Helpers"/>
@@ -129,6 +122,4 @@
 	<!-- Loads the PHP Compatibility ruleset. -->
 	<rule ref="PHPCompatibilityWP" />
 
-	<!-- PHP version check. -->
-	<config name="testVersion" value="7.4-"/>
 </ruleset>
