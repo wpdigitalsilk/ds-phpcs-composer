@@ -88,7 +88,15 @@
         <properties>
             <property name="customAutoEscapedFunctions" type="array">
                 <element value="helpers" />
+				<element value="helper" />
                 <element value="Helpers" />
+				<element value="ds_theme_generate_icon" />
+				<element value="ds_theme_generate_media" />
+				<element value="ds_theme_generate_image" />
+				<element value="ds_theme_generate_video" />
+				<element value="ds_theme_generate_overlay" />
+				<element value="ds_theme_generate_extra_atts" />
+				<element value="ds_theme_generate_inline_svg" />
             </property>
         </properties>
     </rule>
