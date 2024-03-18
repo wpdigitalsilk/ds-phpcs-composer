@@ -99,6 +99,8 @@
 				<element value="ds_theme_generate_overlay" />
 				<element value="ds_theme_generate_extra_atts" />
 				<element value="ds_theme_generate_inline_svg" />
+				<element value="ds_theme_generate_heading" />
+				<element value="ds_theme_generate_accordion" />
             </property>
         </properties>
     </rule>
