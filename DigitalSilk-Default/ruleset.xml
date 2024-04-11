@@ -102,6 +102,7 @@
 				<element value="ds_theme_generate_heading" />
 				<element value="ds_theme_generate_accordion" />
 				<element value="ds_theme_generate_link" />
+				<element value="ds_theme_generate_link_wrapper_attributes" />
             </property>
         </properties>
     </rule>
