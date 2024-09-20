@@ -105,8 +105,9 @@
 				<element value="ds_theme_generate_link_wrapper_attributes" />
 				<element value="ds_theme_generate_button" />
 				<element value="ds_theme_generate_toc_list" />
-
-
+				<element value="get_block_wrapper_attributes" />
+				<element value="render_block" />
+				
 				
             </property>
         </properties>
